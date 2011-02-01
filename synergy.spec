@@ -1,15 +1,14 @@
 Summary: Mouse and keyboard sharing utility
-Name: synergy-plus
+Name: synerg
 Version: 1.3.6
 Release: %mkrel 1
 License: GPL
-Url: http://code.google.com/p/synergy-plus/
+Url: http://synergy-foss.org/
 Group: Networking/Remote access
-Source: http://synergy-plus.googlecode.com/files/synergy-%{version}-Source.tar.gz
+Source: http://synergy.googlecode.com/files/synergy-%{version}-Source.tar.gz
 Source1: synergyc.1.bz2
 Source2: synergys.1.bz2
-Provides: synergy = %{version}
-Obsoletes: synergy <= 1.3.1
+Obsoletes: synergy-plus < %{version}
 Buildroot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 BuildRequires: libx11-devel
 BuildRequires: libxext-devel
