@@ -1,5 +1,5 @@
 Summary: Mouse and keyboard sharing utility
-Name: synerg
+Name: synergy
 Version: 1.3.6
 Release: %mkrel 1
 License: GPL
