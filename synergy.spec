@@ -1,7 +1,7 @@
 Summary: Mouse and keyboard sharing utility
 Name: synergy
 Version: 1.4.5
-Release: 1
+Release: 2
 License: GPL
 Url: http://synergy-foss.org/
 Group: Networking/Remote access
@@ -33,7 +33,7 @@ own display.
 
 %install
 install -D -m755 bin/synergyc %buildroot%_bindir/synergyc
-install -D -m755 bin/synergyc %buildroot%_bindir/synergyc
+install -D -m755 bin/synergys %buildroot%_bindir/synergys
 install -D -m755 bin/integtests %buildroot%_bindir/integtests
 install -D -m755 bin/unittests %buildroot%_bindir/unittests
 mkdir -p %{buildroot}/%{_mandir}/man1/
