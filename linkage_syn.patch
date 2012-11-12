@@ -1,0 +1,11 @@
+diff --git a/src/lib/platform/CMakeLists.txt b/src/lib/platform/CMakeLists.txt
+index 7047428..3deb4b8 100644
+--- a/src/lib/platform/CMakeLists.txt
++++ b/src/lib/platform/CMakeLists.txt
+@@ -172,5 +172,5 @@ if (WIN32)
+ endif()
+ 
+ if (UNIX)
+-	target_link_libraries(platform synergy)
++	target_link_libraries(platform synergy X11 Xtst Xext Xinerama)
+ endif()
