@@ -1,20 +1,20 @@
 Summary: Mouse and keyboard sharing utility
 Name: synergy
-Version: 1.4.5
-Release: 2
-License: GPL
+Version: 1.4.10
+Release: %mkrel 1
+License: GPLv2
 Url: http://synergy-foss.org/
 Group: Networking/Remote access
-Source0: http://synergy.googlecode.com/files/%{name}-%{version}-Source.tar.gz
+Source0: http://synergy.googlecode.com/files/synergy-%{version}-Source.tar.gz
 Source1: synergyc.1.bz2
 Source2: synergys.1.bz2
 Obsoletes: synergy-plus < %{version}
-BuildRequires: libx11-devel
-BuildRequires: libxext-devel
-BuildRequires: libxinerama-devel
-BuildRequires: libxtst-devel
+BuildRequires: pkgconfig(x11)
+BuildRequires: pkgconfig(xext)
+BuildRequires: pkgconfig(xinerama)
+BuildRequires: pkgconfig(xtst)
+BuildRequires: pkgconfig(xi)
 BuildRequires: cmake
-Patch0:	       linkage_syn.patch
 
 %description
 Synergy lets you easily share a single mouse and keyboard between
@@ -25,23 +25,24 @@ own display.
 
 %prep
 %setup -qn synergy-%{version}-Source
-%patch0 -p1
+find . -perm 0600 -exec chmod 0644 {} \;
 
 %build
 %cmake
 %make
 
 %install
-install -D -m755 bin/synergyc %buildroot%_bindir/synergyc
-install -D -m755 bin/synergys %buildroot%_bindir/synergys
-install -D -m755 bin/integtests %buildroot%_bindir/integtests
-install -D -m755 bin/unittests %buildroot%_bindir/unittests
-mkdir -p %{buildroot}/%{_mandir}/man1/
-bzcat %{SOURCE1} > %{buildroot}%{_mandir}/man1/%{name}c.1
-bzcat %{SOURCE2} > %{buildroot}%{_mandir}/man1/%{name}s.1
+install -D -p -m 0755 bin/synergyc %{buildroot}%{_bindir}/synergyc
+install -D -p -m 0755 bin/synergys %{buildroot}%{_bindir}/synergys
+install -D -p -m 0644 doc/synergyc.man %{buildroot}%{_mandir}/man8/synergyc.8
+install -D -p -m 0644 doc/synergys.man %{buildroot}%{_mandir}/man8/synergys.8
 
 %files
-%defattr(-, root, root,755)
-%doc COPYING ChangeLog INSTALL README
-%{_bindir}/*
-%{_mandir}/man1/*
+%defattr(-,root,root,-)
+# None of the documentation files are actually useful here, they all point to
+# the online website, so include just one, the README
+%doc COPYING README doc/synergy.conf.example*
+%{_bindir}/synergyc
+%{_bindir}/synergys
+%{_mandir}/man8/synergyc.8*
+%{_mandir}/man8/synergys.8*
