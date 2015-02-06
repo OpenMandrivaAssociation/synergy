@@ -1,7 +1,7 @@
 Summary: Mouse and keyboard sharing utility
 Name: synergy
 Version: 1.4.10
-Release: %mkrel 1
+Release: 2
 License: GPLv2
 Url: http://synergy-foss.org/
 Group: Networking/Remote access
