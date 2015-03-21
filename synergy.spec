@@ -28,6 +28,7 @@ own display.
 find . -perm 0600 -exec chmod 0644 {} \;
 
 %build
+export LDFLAGS="$LDFLAGS -lm -lpthread"
 %cmake
 %make
 
@@ -38,7 +39,6 @@ install -D -p -m 0644 doc/synergyc.man %{buildroot}%{_mandir}/man8/synergyc.8
 install -D -p -m 0644 doc/synergys.man %{buildroot}%{_mandir}/man8/synergys.8
 
 %files
-%defattr(-,root,root,-)
 # None of the documentation files are actually useful here, they all point to
 # the online website, so include just one, the README
 %doc COPYING README doc/synergy.conf.example*
