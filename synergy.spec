@@ -15,6 +15,7 @@ BuildRequires: pkgconfig(xinerama)
 BuildRequires: pkgconfig(xtst)
 BuildRequires: pkgconfig(xi)
 BuildRequires: cmake
+BuildRequires: gcc-c++, gcc, gcc-cpp
 
 %description
 Synergy lets you easily share a single mouse and keyboard between
@@ -28,6 +29,8 @@ own display.
 find . -perm 0600 -exec chmod 0644 {} \;
 
 %build
+export CC=gcc
+export CXX=g++
 export LDFLAGS="$LDFLAGS -lm -lpthread"
 %cmake
 %make
