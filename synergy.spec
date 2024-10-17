@@ -3,7 +3,7 @@ Name: synergy
 Version: 1.4.10
 Release: 2
 License: GPLv2
-Url: http://synergy-foss.org/
+Url: https://synergy-foss.org/
 Group: Networking/Remote access
 Source0: http://synergy.googlecode.com/files/synergy-%{version}-Source.tar.gz
 Source1: synergyc.1.bz2
